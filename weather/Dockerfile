@@ -11,3 +11,5 @@ COPY . .
 ENTRYPOINT [ "python3" ]
 
 CMD [ "main.py" ]
+
+EXPOSE 5000
