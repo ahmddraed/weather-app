@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weatherapp-weather
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: weatherapp-weather
+  template:
+    metadata:
+      labels:
+        app: weatherapp-weather
+    spec:
+      containers:
+      - name: weatherapp-weather
+        image: ahmddraed/weatherapp-weather:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+
+        env:
+        - name: APIKEY
+          valueFrom:
+            secretKeyRef:
+              name: weather-secret
+              key: api-key
+
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5000

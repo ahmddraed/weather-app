@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weatherapp-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weatherapp-auth
+  template:
+    metadata:
+      labels:
+        app: weatherapp-auth
+    spec:
+      containers:
+      - name: weatherapp-auth
+        image: ahmddraed/weatherapp-auth:latest
+        imagePullPolicy: Always                #always pull the image from the registry (more secure) 
+        ports:
+          - containerPort: 8080
+        env:                        # the enviroment variables in the code to connect to the database  
+          - name: DB_HOST
+            value: mysql
+          - name: DB_USER
+            value: authuser
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: auth-password
+          - name: DB_NAME
+            value: weatherapp
+          - name: DB_PORT
+            value: "3306"
+          - name: SECRET_KEY              # JWT
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: secret-key
