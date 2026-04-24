@@ -1,3 +1,3 @@
 ## System Architecture 
 
-![Screenshot](./Screens/SystemArchitecture)
+![Screenshot](./Screens/SystemArchitecture.png)
