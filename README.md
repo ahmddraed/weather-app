@@ -14,6 +14,7 @@ The application consists of three main services:
 1. create kind cluster from the cluster-config.yaml file by $kind create cluster --config=cluster-config.yaml
 1. edit your /etc/hosts file by adding ur localmachine ip refering to www.weatherapp.com ![Screenshot](./screens/:etc:hosts%20screen.png)
 1. cd to each service and start deploying k8's manifests starting from MYSQL database by $kubectl apply -f 
+![Screenshot](./screens/weatherapp-screen.png)
 
 
 ## Dependencies
