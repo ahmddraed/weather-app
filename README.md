@@ -1,4 +1,4 @@
-## overveiw
+## Overveiw
 This project is a Weather Application built using a microservices architecture and deployed on a local Kubernetes cluster using kind (Kubernetes in Docker).
 The application consists of three main services:
 1. UI Service – Frontend application for user interaction
